@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/*
+  Fallbacks match src/content/site.ts palette.
+  Live values are set on <html> from that file.
+*/
+:root {
+  --ss-ink: #13233f;
+  --ss-brand: #133162;
+  --ss-brand-deep: #0c1f40;
+  --ss-accent: #c2343f;
+  --ss-salmon: #f28c6a;
+  --ss-nori: #1f3b2d;
+  --ss-rice: #fffdf8;
+  --ss-paper: #ffffff;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-ink: var(--ss-ink);
+  --color-brand: var(--ss-brand);
+  --color-brand-deep: var(--ss-brand-deep);
+  --color-accent: var(--ss-accent);
+  --color-salmon: var(--ss-salmon);
+  --color-nori: var(--ss-nori);
+  --color-rice: var(--ss-rice);
+  --color-paper: var(--ss-paper);
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-barlow), "Arial Narrow", Impact, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+}
+
+body {
+  background: var(--ss-rice);
+  color: var(--ss-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--ss-salmon);
+  color: var(--ss-ink);
+}
+
+.shop-awning {
+  background: var(--ss-salmon);
+  box-shadow: inset 0 4px 0 var(--ss-accent);
+}
+
+.shop-awning::before {
+  content: "";
+  display: block;
+  height: 0.85rem;
+  background: var(--ss-brand);
+}
+
+.shop-awning::after {
+  content: "";
+  display: block;
+  height: 0.9rem;
+  background: radial-gradient(circle at 12px 0, transparent 11px, var(--ss-brand) 12px) 0 0 / 24px 0.9rem repeat-x;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
